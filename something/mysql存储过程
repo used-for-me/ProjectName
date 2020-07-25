@@ -1,0 +1,29 @@
+# 更改结束符仅当前会话有效
+delimiter $
+drop procedure if exist my_procedure;
+create procedure my_procedure(in value int)
+
+# comment "int";
+begin
+declare value1 int;
+declare value2 int;
+declare total int;
+devlare done int default false;
+
+declare mycursor cursor for
+select id, num from db where value=value;
+declare continue handler for not found set done=true;
+set total = 0
+
+open mycursor;
+my_loop:loop
+fetch mycursor into value1, value2;
+if done
+then
+leave my_loop;
+end if;
+set total = total + 1;
+end loop;
+
+close mycursor;
+end;

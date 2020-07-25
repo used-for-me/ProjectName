@@ -1,0 +1,3 @@
+尽量避免直接比较两个实数是否相等
+frozenset 不可变集合
+dir(__builtins__)

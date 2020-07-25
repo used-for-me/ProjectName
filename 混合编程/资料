@@ -1,0 +1,1 @@
+gcc -shared -Wl,-soname,[库名] -o [name].so -fPIC file.c
